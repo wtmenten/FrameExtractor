@@ -22,6 +22,14 @@ The analyzer processes each video sequentially in three stages.
 2. Saves first-middle-last frames from each scene to the job output folder
 3. Runs CausalLM inference with `MiaoshouAI/Florence-2-large-PromptGen-v2.0` on the scenes mid-frame to generate a scene description.
 
+*NOTE:*
+
+The Analyzer process can save well over 1000 high-quality (95) jpg images per standard (25m) length episode. It's up to the user to clear out the job folder when you're done with the raw Analyzer outputs.
+
+The Collator save the selected Frame Data within a new workbook so all other job data can safely be deleted.
+
+Tested on a laptop i9 and under-volted RTX 3080, The Analyzer takes roughly 15 minutes for each 25-minute video - 60% of which is the scene description stage. 
+The Image-To-Text inference uses ~ 8GB of VRAM with the florence2-large finetune model. A smaller prompt-gen model could be used on more constrained GPU's
 #### Collator
 The Collator GUI processes the raw `video_frame_analysis.xlsx` workbooks created by the analyzer allowing the user to cherry-pick scenes, the best frame in scene and adjust the description.
 The selected frames and descriptions are then saved in a new workbook which can then been used for lora training or whatever else.
@@ -37,6 +45,16 @@ When finished with the current workbook, the collator will wait for you to selec
 * `Load` - continue processing by selecting another workbook
 * `Finish` - complete the job, saving the selected frames workbook
 * `Exit` - close without saving 
+
+#### CLI Output Example With Timings
+```commandline
+2025_06_30_16:47:50: Starting job_000
+2025_06_30_16:47:50: Starting Video 1
+Detected: 356 | Progress: 100%|█████████▉| 34286/34293 [03:49<00:00, 149.46frames/s]
+100%|██████████| 1071/1071 [02:07<00:00,  8.42images/s]
+Describing Scenes: 100%|██████████| 357/357 [10:06<00:00,  1.70s/scene]
+2025_06_30_17:04:02: Done
+```
 
 #### Installation 
 
