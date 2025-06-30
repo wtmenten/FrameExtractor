@@ -116,6 +116,6 @@ class FrameAnalyzer():
             progress_bar.close()
             ws.column_dimensions["A"].width = 20
             ws.column_dimensions["B"].width = 25
-            wb.save(os.path.join(vid_dir, "videos_frame_analysis.xlsx"))
+            wb.save(os.path.join(vid_dir, "video_frame_analysis.xlsx"))
             wb.close()
             print("{d}: Done".format(d=datetime.datetime.now().strftime("%Y_%m_%d_%H:%M:%S")))
