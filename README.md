@@ -8,10 +8,10 @@ built to aid GenAI LoRA dataset selection and annotation process, but could be u
 #### CLI
 the cli tool `cli.py` can be used to execute the analyzer and collator modules.
 
-`-i` - sets up the analyzer interactively (prompts the user for the job id `-j` and threshold `-t`)
-`-c` - runs the collator GUI which then prompt the user to open a video_frame_analysis.xlsx workbook
-`-o` - custom output directory path
-`-v` - list of video paths to skip the interactive selector, or if they are in various folders.
+* `-i` - sets up the analyzer interactively (prompts the user for the job id `-j` and threshold `-t`)
+* `-c` - runs the collator GUI which then prompt the user to open a video_frame_analysis.xlsx workbook
+* `-o` - custom output directory path
+* `-v` - list of video paths to skip the interactive selector, or if they are in various folders.
 
 
 ### Details
